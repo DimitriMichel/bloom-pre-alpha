@@ -13,8 +13,23 @@ class Group extends Model
         'name',
     ];
 
+    /*
+    *
+    * Get Group's Users
+    *
+    */
     public function users()
     {
         $this->hasMany(User::class, 'group_id');
+    }
+
+    /*
+    *
+    * Get Group's parent Organization
+    *
+    */
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
     }
 }

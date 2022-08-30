@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Group>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Organization>
  */
-class GroupFactory extends Factory
+class OrganizationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +16,8 @@ class GroupFactory extends Factory
      */
     public function definition()
     {
-        $organization = Organization::factory()->create();
         return [
             'name'=> fake()->company,
-            'organization_id' => $organization,
         ];
     }
 }
