@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class GroupFactory extends Factory
      */
     public function definition()
     {
+        $organization = Organization::factory()->create();
         return [
             'name'=> fake()->company,
+            'organization_id' => $organization,
         ];
     }
 }
