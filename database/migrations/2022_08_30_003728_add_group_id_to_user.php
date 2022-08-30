@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->Str('name');
+        Schema::table('user', function (Blueprint $table) {
+            $table->unsignedInteger('group_id');
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::table('user', function (Blueprint $table) {
+            dropColumn->group_id;
+        });
     }
 };
