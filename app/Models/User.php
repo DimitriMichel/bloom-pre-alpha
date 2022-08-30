@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+    *
+    * Get user group
+    *
+    */
+    public function group() 
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
