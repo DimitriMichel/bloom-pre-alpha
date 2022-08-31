@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class);
     }
+
+    /*
+    *
+    * Get user comments
+    *
+    */
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class, 'user_id');
+    }
 }
