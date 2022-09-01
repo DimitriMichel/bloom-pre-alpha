@@ -59,4 +59,32 @@ class GroupAPI extends TestCase
        ]);
     }
 
+    /**
+     * Update a specific group.
+     *
+     *
+     */
+    public function test_update_a_group()
+    {
+        $group = Group::factory()->create();
+
+        //Change Group Name
+        $this->putJson("api/groups/$group->id", ['name' => 'Updated Group Name']);
+
+        //Get Group with updated Group name
+        $this->getJson("api/groups/$group->id")->assertJsonFragment(['name' => 'Updated Group Name']);
+    }
+
+     /**
+     * Delete a specific group.
+     *
+     *
+     */
+    public function test_delete_a_specific_group()
+    {
+        $group = Group::factory()->create();
+
+        $response = $this->deleteJson("api/groups/$group->id")
+        ->assertNoContent();
+    }
 }
