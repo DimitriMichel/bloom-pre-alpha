@@ -18,19 +18,8 @@ class GroupController extends Controller
        $groups = Group::all();
 
        return response()->json([
-        'status' => true,
         'groups' => $groups,
        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-     //
     }
 
     /**
@@ -43,10 +32,9 @@ class GroupController extends Controller
     {
        $group = Group::create($request->all());
        return response()->json([
-        'status' => true,
         'message' => 'Group successfully created!',
         'group' => $group
-       ], 200); 
+       ], 201); 
     }
 
     /**
@@ -57,18 +45,11 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $group = Group::findOrFail($id);
+        return response()->json([
+            'message' => 'Group Found!',
+            'group' => $group,
+        ]);
     }
 
     /**
@@ -82,7 +63,6 @@ class GroupController extends Controller
     {
         $group->update($request->all());
         return response()->json([
-            'status' => true,
             'message' => 'Group updated sucessfully',
             'group' => $group,
         ], 200);
@@ -98,8 +78,7 @@ class GroupController extends Controller
     {
        $group->delete();
        return response()->json([
-        'status' => true,
         'message' => 'Group deleted successfully'
-       ], 200);
+       ], 204);
     }
 }
