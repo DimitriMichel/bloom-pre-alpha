@@ -51,9 +51,12 @@ class GroupAPI extends TestCase
     {
        $group = Group::factory()->create();
     
-       $response = $this->getJson("api/groups/$group->id");
-       //dd($response);
-       $response->assertOk();
+       $response = $this->getJson("api/groups/$group->id")
+       ->assertOk()
+       ->assertJsonStructure([
+        'message',
+        'group'
+       ]);
     }
 
 }
