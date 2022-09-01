@@ -18,7 +18,6 @@ class GroupController extends Controller
        $groups = Group::all();
 
        return response()->json([
-        'status' => true,
         'groups' => $groups,
        ]);
     }
@@ -43,10 +42,9 @@ class GroupController extends Controller
     {
        $group = Group::create($request->all());
        return response()->json([
-        'status' => true,
         'message' => 'Group successfully created!',
         'group' => $group
-       ], 200); 
+       ], 201); 
     }
 
     /**
@@ -82,7 +80,6 @@ class GroupController extends Controller
     {
         $group->update($request->all());
         return response()->json([
-            'status' => true,
             'message' => 'Group updated sucessfully',
             'group' => $group,
         ], 200);
@@ -98,7 +95,6 @@ class GroupController extends Controller
     {
        $group->delete();
        return response()->json([
-        'status' => true,
         'message' => 'Group deleted successfully'
        ], 200);
     }
