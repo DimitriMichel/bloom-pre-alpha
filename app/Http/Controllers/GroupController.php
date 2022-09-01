@@ -55,7 +55,11 @@ class GroupController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = Group::findOrFail($id);
+        return response()->json([
+            'message' => 'Group Found!',
+            'group' => $group,
+        ]);
     }
 
     /**
