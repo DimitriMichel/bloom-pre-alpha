@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\StoreUserRequest;
 class UserController extends Controller
 {
@@ -57,7 +58,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
         return response()->json([
